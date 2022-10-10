@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c6f46643648d4b8394b3ef99d4b22483" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.City" Width="1.5" PointX="1.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Diagnoz" Width="1.5" PointX="10.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Doctor" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.history_store" Width="1.5" PointX="10.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Karta" Width="1.5" PointX="12.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Klinika" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Lecheniye" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Obsledovaniye" Width="1.5" PointX="8.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Oplata" Width="1.5" PointX="6" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Pasport" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Patient" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Pol" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.POLIS" Width="1.5" PointX="3.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Priem" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Raspisanie" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rayon" Width="1.5" PointX="3.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Slozhnost" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Smena" Width="1.5" PointX="1.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SNILS" Width="1.5" PointX="3.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Specialnost" Width="1.5" PointX="0.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Strana" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Summa" Width="1.5" PointX="3.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="12.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Uslugi" Width="1.5" PointX="0.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Visits" Width="1.5" PointX="10.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Zhaloba" Width="1.5" PointX="8.25" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__Klinika__Kod_cit__06ED0088" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Diagnoz__Kod_lec__7E57BA87" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Diagnoz__Kod_slo__7F4BDEC0" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Karta__Kod_diagn__1AF3F935" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Doctor__Kod_pasp__0BB1B5A5" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Doctor__Kod_plot__09C96D33" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Doctor__Kod_spec__0CA5D9DE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Doctor__Kod_uslu__0E8E2250" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Priem__Kod_docto__116A8EFB" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Doctor_Raspisanie" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Karta__Kod_visit__19FFD4FC" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Klinika__Kod_str__05F8DC4F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Obsledova__Kod_o__75C27486" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Visits__Kod_obsl__153B1FDF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Oplata__Summa__72E607DB" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Patient__Kod_pas__6C390A4C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Patient__Kod_pol__6B44E613" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Patient__Kod_POL__6E2152BE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Patient__Kod_ray__6A50C1DA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Patient__Kod_SNI__6D2D2E85" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Priem__Kod_patie__125EB334" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Visits__Kod_zapi__162F4418" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Raspisani__Kod_s__5832119F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Visits__Kod_zhal__17236851" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

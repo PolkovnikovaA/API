@@ -1,0 +1,1739 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Kod_city" />
+          </Key>
+          <Property Name="Kod_city" Type="int" Nullable="false" />
+          <Property Name="City" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diagnoz">
+          <Key>
+            <PropertyRef Name="Kod_diagnoz" />
+          </Key>
+          <Property Name="Kod_diagnoz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Diagnoz" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="Surname_doctor" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Name_doctor" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Middle_name_doctor" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Data_obrashcheniye" Type="date" Nullable="false" />
+          <Property Name="Data_vyzdorovleniya" Type="date" Nullable="false" />
+          <Property Name="Kod_lecheniye" Type="int" />
+          <Property Name="Profilaktika" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="Kod_slozhnost" Type="int" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Kod_doctor" />
+          </Key>
+          <Property Name="Kod_doctor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod_plot" Type="int" />
+          <Property Name="Kod_raspisanie" Type="int" />
+          <Property Name="N_raspisanie" Type="int" />
+          <Property Name="Surname" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Name_" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Middle_name" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Date_of_birth" Type="date" Nullable="false" />
+          <Property Name="Kod_pasport" Type="int" />
+          <Property Name="Adres" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Op_rabot" Type="int" Nullable="false" />
+          <Property Name="Kod_specialnost" Type="int" />
+          <Property Name="Tel_" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Mail" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="Zarplata" Type="int" Nullable="false" />
+          <Property Name="Kod_uslugi" Type="int" />
+        </EntityType>
+        <EntityType Name="history_store">
+          <Key>
+            <PropertyRef Name="table_name" />
+            <PropertyRef Name="pk_date_dest" />
+          </Key>
+          <Property Name="timemark" Type="datetime" Nullable="false" />
+          <Property Name="table_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pk_date_src" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="pk_date_dest" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="record_state" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Karta">
+          <Key>
+            <PropertyRef Name="Kod_karta" />
+          </Key>
+          <Property Name="Kod_karta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="N_karta" Type="int" />
+          <Property Name="Kod_visits" Type="int" />
+          <Property Name="Zapis" Type="date" Nullable="false" />
+          <Property Name="Kod_diagnoz" Type="int" />
+        </EntityType>
+        <EntityType Name="Klinika">
+          <Key>
+            <PropertyRef Name="Kod_plot" />
+          </Key>
+          <Property Name="Kod_plot" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod_strana" Type="int" />
+          <Property Name="Kod_city" Type="int" />
+          <Property Name="Adres" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Nazvanie" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lecheniye">
+          <Key>
+            <PropertyRef Name="Kod_lecheniye" />
+          </Key>
+          <Property Name="Kod_lecheniye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vid_lecheniye" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Duration_lecheniye" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Name_lecheniye" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Opisaniye" Type="char" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Obsledovaniye">
+          <Key>
+            <PropertyRef Name="Kod_obsledovaniye" />
+          </Key>
+          <Property Name="Kod_obsledovaniye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Opisaniye" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="Kod_oplata" Type="int" />
+        </EntityType>
+        <EntityType Name="Oplata">
+          <Key>
+            <PropertyRef Name="Kod_oplata" />
+          </Key>
+          <Property Name="Kod_oplata" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vid_oplata" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Summa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pasport">
+          <Key>
+            <PropertyRef Name="Kod_pasporta" />
+          </Key>
+          <Property Name="Kod_pasporta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="N_pasporta" Type="int" />
+          <Property Name="S_pasporta" Type="int" />
+          <Property Name="V_pasport" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="Data_v" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Kod_patient" />
+          </Key>
+          <Property Name="Kod_patient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="N_karta" Type="int" />
+          <Property Name="Surname" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Name_" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Middle_name" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Tel_" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Kod_rayon" Type="int" />
+          <Property Name="Date_of_birth" Type="date" Nullable="false" />
+          <Property Name="N_plot" Type="int" />
+          <Property Name="Kod_pol" Type="int" />
+          <Property Name="Mail" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="Sostoyaniye" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="Kod_pasporta" Type="int" />
+          <Property Name="Kod_SNILSA" Type="int" />
+          <Property Name="Kod_POLISA" Type="int" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Pol">
+          <Key>
+            <PropertyRef Name="Kod_pol" />
+          </Key>
+          <Property Name="Kod_pol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pol" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POLIS">
+          <Key>
+            <PropertyRef Name="Kod_POLISa" />
+          </Key>
+          <Property Name="Kod_POLISa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POLIS" Type="char" MaxLength="150" Nullable="false" />
+          <Property Name="N_POLISa" Type="char" MaxLength="20" />
+          <Property Name="S_POLISa" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Priem">
+          <Key>
+            <PropertyRef Name="Kod_zapisi" />
+          </Key>
+          <Property Name="Kod_zapisi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod_doctor" Type="int" />
+          <Property Name="Data_priema" Type="date" Nullable="false" />
+          <Property Name="Kod_patient" Type="int" />
+          <Property Name="Surname_patient" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Name_patient" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Middle_name_patient" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Raspisanie">
+          <Key>
+            <PropertyRef Name="Kod_raspisanie" />
+          </Key>
+          <Property Name="Kod_raspisanie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="N_raspisanie" Type="int" />
+          <Property Name="Data_priema" Type="date" Nullable="false" />
+          <Property Name="N_kabineta" Type="int" />
+          <Property Name="Kod_smena" Type="int" />
+        </EntityType>
+        <EntityType Name="Rayon">
+          <Key>
+            <PropertyRef Name="Kod_rayon" />
+          </Key>
+          <Property Name="Kod_rayon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rayon" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Slozhnost">
+          <Key>
+            <PropertyRef Name="Kod_slozhnost" />
+          </Key>
+          <Property Name="Kod_slozhnost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Slozhnost" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Opisaniye" Type="char" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Smena">
+          <Key>
+            <PropertyRef Name="Kod_smena" />
+          </Key>
+          <Property Name="Kod_smena" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_smena" Type="date" Nullable="false" />
+          <Property Name="N_smena" Type="int" />
+        </EntityType>
+        <EntityType Name="SNILS">
+          <Key>
+            <PropertyRef Name="Kod_SNILSa" />
+          </Key>
+          <Property Name="Kod_SNILSa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SNILS" Type="char" MaxLength="100" Nullable="false" />
+          <Property Name="N_SNILSa" Type="char" MaxLength="15" />
+          <Property Name="Data_registr" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "33П-КР-Полковникова.dbo.Sotr" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Sotr">
+          <Property Name="id" Type="int" />
+          <Property Name="Familiya" Type="nchar" MaxLength="50" />
+          <Property Name="Dolzhnost" Type="nchar" MaxLength="50" />
+          <Property Name="image" Type="nvarchar(max)" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "33П-КР-Полковникова.dbo.Sotrudnik" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Sotrudnik">
+          <Property Name="id" Type="int" />
+          <Property Name="Familiya" Type="nchar" MaxLength="50" />
+          <Property Name="Dolzhnost" Type="nchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "33П-КР-Полковникова.dbo.Sotrudniki" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Sotrudniki">
+          <Property Name="id" Type="int" />
+          <Property Name="Familiya" Type="nchar" MaxLength="50" />
+          <Property Name="Dolzhnost" Type="nchar" MaxLength="50" />
+          <Property Name="image" Type="image" />
+        </EntityType>-->
+        <EntityType Name="Specialnost">
+          <Key>
+            <PropertyRef Name="Kod_specialnost" />
+          </Key>
+          <Property Name="Kod_specialnost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Specialnost" Type="char" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Strana">
+          <Key>
+            <PropertyRef Name="Kod_strana" />
+          </Key>
+          <Property Name="Kod_strana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Strana" Type="char" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Summa">
+          <Key>
+            <PropertyRef Name="Kod_summa" />
+          </Key>
+          <Property Name="Kod_summa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Summa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="Kod_uslugi" />
+          </Key>
+          <Property Name="Kod_uslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uslugi" Type="char" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Visits">
+          <Key>
+            <PropertyRef Name="Kod_visits" />
+          </Key>
+          <Property Name="Kod_visits" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod_obsledovaniye" Type="int" />
+          <Property Name="Zapis_visits" Type="date" Nullable="false" />
+          <Property Name="Data_priema" Type="date" Nullable="false" />
+          <Property Name="N_karta" Type="int" />
+          <Property Name="Kod_zapisi" Type="int" Nullable="false" />
+          <Property Name="Kod_zhaloba" Type="int" />
+        </EntityType>
+        <EntityType Name="Zhaloba">
+          <Key>
+            <PropertyRef Name="Kod_zhaloba" />
+          </Key>
+          <Property Name="Kod_zhaloba" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Zhaloba" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="Kod_doctor" Type="int" />
+        </EntityType>
+        <Association Name="FK__Diagnoz__Kod_lec__7E57BA87">
+          <End Role="Lecheniye" Type="Self.Lecheniye" Multiplicity="0..1" />
+          <End Role="Diagnoz" Type="Self.Diagnoz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lecheniye">
+              <PropertyRef Name="Kod_lecheniye" />
+            </Principal>
+            <Dependent Role="Diagnoz">
+              <PropertyRef Name="Kod_lecheniye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnoz__Kod_slo__7F4BDEC0">
+          <End Role="Slozhnost" Type="Self.Slozhnost" Multiplicity="0..1" />
+          <End Role="Diagnoz" Type="Self.Diagnoz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slozhnost">
+              <PropertyRef Name="Kod_slozhnost" />
+            </Principal>
+            <Dependent Role="Diagnoz">
+              <PropertyRef Name="Kod_slozhnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Kod_pasp__0BB1B5A5">
+          <End Role="Pasport" Type="Self.Pasport" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasport">
+              <PropertyRef Name="Kod_pasporta" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_pasport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Kod_plot__09C96D33">
+          <End Role="Klinika" Type="Self.Klinika" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klinika">
+              <PropertyRef Name="Kod_plot" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_plot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Kod_spec__0CA5D9DE">
+          <End Role="Specialnost" Type="Self.Specialnost" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialnost">
+              <PropertyRef Name="Kod_specialnost" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_specialnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Kod_uslu__0E8E2250">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Kod_uslugi" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Karta__Kod_diagn__1AF3F935">
+          <End Role="Diagnoz" Type="Self.Diagnoz" Multiplicity="0..1" />
+          <End Role="Karta" Type="Self.Karta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnoz">
+              <PropertyRef Name="Kod_diagnoz" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="Kod_diagnoz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Karta__Kod_visit__19FFD4FC">
+          <End Role="Visits" Type="Self.Visits" Multiplicity="0..1" />
+          <End Role="Karta" Type="Self.Karta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visits">
+              <PropertyRef Name="Kod_visits" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="Kod_visits" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Klinika__Kod_cit__06ED0088">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Klinika" Type="Self.Klinika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Kod_city" />
+            </Principal>
+            <Dependent Role="Klinika">
+              <PropertyRef Name="Kod_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Klinika__Kod_str__05F8DC4F">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="0..1" />
+          <End Role="Klinika" Type="Self.Klinika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="Kod_strana" />
+            </Principal>
+            <Dependent Role="Klinika">
+              <PropertyRef Name="Kod_strana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Obsledova__Kod_o__75C27486">
+          <End Role="Oplata" Type="Self.Oplata" Multiplicity="0..1" />
+          <End Role="Obsledovaniye" Type="Self.Obsledovaniye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oplata">
+              <PropertyRef Name="Kod_oplata" />
+            </Principal>
+            <Dependent Role="Obsledovaniye">
+              <PropertyRef Name="Kod_oplata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Oplata__Summa__72E607DB">
+          <End Role="Summa" Type="Self.Summa" Multiplicity="1" />
+          <End Role="Oplata" Type="Self.Oplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Summa">
+              <PropertyRef Name="Kod_summa" />
+            </Principal>
+            <Dependent Role="Oplata">
+              <PropertyRef Name="Summa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_pas__6C390A4C">
+          <End Role="Pasport" Type="Self.Pasport" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasport">
+              <PropertyRef Name="Kod_pasporta" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_pasporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_pol__6B44E613">
+          <End Role="Pol" Type="Self.Pol" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pol">
+              <PropertyRef Name="Kod_pol" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_pol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_POL__6E2152BE">
+          <End Role="POLIS" Type="Self.POLIS" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLIS">
+              <PropertyRef Name="Kod_POLISa" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_POLISA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_ray__6A50C1DA">
+          <End Role="Rayon" Type="Self.Rayon" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rayon">
+              <PropertyRef Name="Kod_rayon" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_rayon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_SNI__6D2D2E85">
+          <End Role="SNILS" Type="Self.SNILS" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SNILS">
+              <PropertyRef Name="Kod_SNILSa" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_SNILSA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Priem__Kod_docto__116A8EFB">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Kod_doctor" />
+            </Principal>
+            <Dependent Role="Priem">
+              <PropertyRef Name="Kod_doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Priem__Kod_patie__125EB334">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Kod_patient" />
+            </Principal>
+            <Dependent Role="Priem">
+              <PropertyRef Name="Kod_patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Raspisani__Kod_s__5832119F">
+          <End Role="Smena" Type="Self.Smena" Multiplicity="0..1" />
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smena">
+              <PropertyRef Name="Kod_smena" />
+            </Principal>
+            <Dependent Role="Raspisanie">
+              <PropertyRef Name="Kod_smena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visits__Kod_obsl__153B1FDF">
+          <End Role="Obsledovaniye" Type="Self.Obsledovaniye" Multiplicity="0..1" />
+          <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obsledovaniye">
+              <PropertyRef Name="Kod_obsledovaniye" />
+            </Principal>
+            <Dependent Role="Visits">
+              <PropertyRef Name="Kod_obsledovaniye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visits__Kod_zapi__162F4418">
+          <End Role="Priem" Type="Self.Priem" Multiplicity="1" />
+          <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priem">
+              <PropertyRef Name="Kod_zapisi" />
+            </Principal>
+            <Dependent Role="Visits">
+              <PropertyRef Name="Kod_zapisi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visits__Kod_zhal__17236851">
+          <End Role="Zhaloba" Type="Self.Zhaloba" Multiplicity="0..1" />
+          <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zhaloba">
+              <PropertyRef Name="Kod_zhaloba" />
+            </Principal>
+            <Dependent Role="Visits">
+              <PropertyRef Name="Kod_zhaloba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctor_Raspisanie">
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raspisanie">
+              <PropertyRef Name="Kod_raspisanie" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_raspisanie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnoz" EntityType="Self.Diagnoz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="history_store" EntityType="Self.history_store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Karta" EntityType="Self.Karta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klinika" EntityType="Self.Klinika" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lecheniye" EntityType="Self.Lecheniye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Obsledovaniye" EntityType="Self.Obsledovaniye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oplata" EntityType="Self.Oplata" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pasport" EntityType="Self.Pasport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pol" EntityType="Self.Pol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLIS" EntityType="Self.POLIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Priem" EntityType="Self.Priem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Raspisanie" EntityType="Self.Raspisanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rayon" EntityType="Self.Rayon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slozhnost" EntityType="Self.Slozhnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Smena" EntityType="Self.Smena" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SNILS" EntityType="Self.SNILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialnost" EntityType="Self.Specialnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Strana" EntityType="Self.Strana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Summa" EntityType="Self.Summa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visits" EntityType="Self.Visits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zhaloba" EntityType="Self.Zhaloba" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Diagnoz__Kod_lec__7E57BA87" Association="Self.FK__Diagnoz__Kod_lec__7E57BA87">
+            <End Role="Lecheniye" EntitySet="Lecheniye" />
+            <End Role="Diagnoz" EntitySet="Diagnoz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnoz__Kod_slo__7F4BDEC0" Association="Self.FK__Diagnoz__Kod_slo__7F4BDEC0">
+            <End Role="Slozhnost" EntitySet="Slozhnost" />
+            <End Role="Diagnoz" EntitySet="Diagnoz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Kod_pasp__0BB1B5A5" Association="Self.FK__Doctor__Kod_pasp__0BB1B5A5">
+            <End Role="Pasport" EntitySet="Pasport" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Kod_plot__09C96D33" Association="Self.FK__Doctor__Kod_plot__09C96D33">
+            <End Role="Klinika" EntitySet="Klinika" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Kod_spec__0CA5D9DE" Association="Self.FK__Doctor__Kod_spec__0CA5D9DE">
+            <End Role="Specialnost" EntitySet="Specialnost" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Kod_uslu__0E8E2250" Association="Self.FK__Doctor__Kod_uslu__0E8E2250">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Karta__Kod_diagn__1AF3F935" Association="Self.FK__Karta__Kod_diagn__1AF3F935">
+            <End Role="Diagnoz" EntitySet="Diagnoz" />
+            <End Role="Karta" EntitySet="Karta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Karta__Kod_visit__19FFD4FC" Association="Self.FK__Karta__Kod_visit__19FFD4FC">
+            <End Role="Visits" EntitySet="Visits" />
+            <End Role="Karta" EntitySet="Karta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Klinika__Kod_cit__06ED0088" Association="Self.FK__Klinika__Kod_cit__06ED0088">
+            <End Role="City" EntitySet="City" />
+            <End Role="Klinika" EntitySet="Klinika" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Klinika__Kod_str__05F8DC4F" Association="Self.FK__Klinika__Kod_str__05F8DC4F">
+            <End Role="Strana" EntitySet="Strana" />
+            <End Role="Klinika" EntitySet="Klinika" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Obsledova__Kod_o__75C27486" Association="Self.FK__Obsledova__Kod_o__75C27486">
+            <End Role="Oplata" EntitySet="Oplata" />
+            <End Role="Obsledovaniye" EntitySet="Obsledovaniye" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Oplata__Summa__72E607DB" Association="Self.FK__Oplata__Summa__72E607DB">
+            <End Role="Summa" EntitySet="Summa" />
+            <End Role="Oplata" EntitySet="Oplata" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_pas__6C390A4C" Association="Self.FK__Patient__Kod_pas__6C390A4C">
+            <End Role="Pasport" EntitySet="Pasport" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_pol__6B44E613" Association="Self.FK__Patient__Kod_pol__6B44E613">
+            <End Role="Pol" EntitySet="Pol" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_POL__6E2152BE" Association="Self.FK__Patient__Kod_POL__6E2152BE">
+            <End Role="POLIS" EntitySet="POLIS" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_ray__6A50C1DA" Association="Self.FK__Patient__Kod_ray__6A50C1DA">
+            <End Role="Rayon" EntitySet="Rayon" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_SNI__6D2D2E85" Association="Self.FK__Patient__Kod_SNI__6D2D2E85">
+            <End Role="SNILS" EntitySet="SNILS" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Priem__Kod_docto__116A8EFB" Association="Self.FK__Priem__Kod_docto__116A8EFB">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Priem" EntitySet="Priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Priem__Kod_patie__125EB334" Association="Self.FK__Priem__Kod_patie__125EB334">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Priem" EntitySet="Priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Raspisani__Kod_s__5832119F" Association="Self.FK__Raspisani__Kod_s__5832119F">
+            <End Role="Smena" EntitySet="Smena" />
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visits__Kod_obsl__153B1FDF" Association="Self.FK__Visits__Kod_obsl__153B1FDF">
+            <End Role="Obsledovaniye" EntitySet="Obsledovaniye" />
+            <End Role="Visits" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visits__Kod_zapi__162F4418" Association="Self.FK__Visits__Kod_zapi__162F4418">
+            <End Role="Priem" EntitySet="Priem" />
+            <End Role="Visits" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visits__Kod_zhal__17236851" Association="Self.FK__Visits__Kod_zhal__17236851">
+            <End Role="Zhaloba" EntitySet="Zhaloba" />
+            <End Role="Visits" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctor_Raspisanie" Association="Self.FK_Doctor_Raspisanie">
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Kod_city" />
+          </Key>
+          <Property Name="Kod_city" Type="Int32" Nullable="false" />
+          <Property Name="City1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Klinika" Relationship="Self.FK__Klinika__Kod_cit__06ED0088" FromRole="City" ToRole="Klinika" />
+        </EntityType>
+        <EntityType Name="Diagnoz">
+          <Key>
+            <PropertyRef Name="Kod_diagnoz" />
+          </Key>
+          <Property Name="Kod_diagnoz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Diagnoz1" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Surname_doctor" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name_doctor" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Middle_name_doctor" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Data_obrashcheniye" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_vyzdorovleniya" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Kod_lecheniye" Type="Int32" />
+          <Property Name="Profilaktika" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Kod_slozhnost" Type="Int32" />
+          <NavigationProperty Name="Lecheniye" Relationship="Self.FK__Diagnoz__Kod_lec__7E57BA87" FromRole="Diagnoz" ToRole="Lecheniye" />
+          <NavigationProperty Name="Slozhnost" Relationship="Self.FK__Diagnoz__Kod_slo__7F4BDEC0" FromRole="Diagnoz" ToRole="Slozhnost" />
+          <NavigationProperty Name="Karta" Relationship="Self.FK__Karta__Kod_diagn__1AF3F935" FromRole="Diagnoz" ToRole="Karta" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Kod_doctor" />
+          </Key>
+          <Property Name="Kod_doctor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod_plot" Type="Int32" />
+          <Property Name="Kod_raspisanie" Type="Int32" />
+          <Property Name="N_raspisanie" Type="Int32" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name_" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Middle_name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Date_of_birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Kod_pasport" Type="Int32" />
+          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Op_rabot" Type="Int32" Nullable="false" />
+          <Property Name="Kod_specialnost" Type="Int32" />
+          <Property Name="Tel_" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Zarplata" Type="Int32" Nullable="false" />
+          <Property Name="Kod_uslugi" Type="Int32" />
+          <NavigationProperty Name="Pasport" Relationship="Self.FK__Doctor__Kod_pasp__0BB1B5A5" FromRole="Doctor" ToRole="Pasport" />
+          <NavigationProperty Name="Klinika" Relationship="Self.FK__Doctor__Kod_plot__09C96D33" FromRole="Doctor" ToRole="Klinika" />
+          <NavigationProperty Name="Specialnost" Relationship="Self.FK__Doctor__Kod_spec__0CA5D9DE" FromRole="Doctor" ToRole="Specialnost" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK__Doctor__Kod_uslu__0E8E2250" FromRole="Doctor" ToRole="Uslugi" />
+          <NavigationProperty Name="Priem" Relationship="Self.FK__Priem__Kod_docto__116A8EFB" FromRole="Doctor" ToRole="Priem" />
+          <NavigationProperty Name="Raspisanie" Relationship="Self.FK_Doctor_Raspisanie" FromRole="Doctor" ToRole="Raspisanie" />
+        </EntityType>
+        <EntityType Name="history_store">
+          <Key>
+            <PropertyRef Name="table_name" />
+            <PropertyRef Name="pk_date_dest" />
+          </Key>
+          <Property Name="timemark" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="table_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pk_date_src" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pk_date_dest" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="record_state" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Karta">
+          <Key>
+            <PropertyRef Name="Kod_karta" />
+          </Key>
+          <Property Name="Kod_karta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="N_karta" Type="Int32" />
+          <Property Name="Kod_visits" Type="Int32" />
+          <Property Name="Zapis" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Kod_diagnoz" Type="Int32" />
+          <NavigationProperty Name="Diagnoz" Relationship="Self.FK__Karta__Kod_diagn__1AF3F935" FromRole="Karta" ToRole="Diagnoz" />
+          <NavigationProperty Name="Visits" Relationship="Self.FK__Karta__Kod_visit__19FFD4FC" FromRole="Karta" ToRole="Visits" />
+        </EntityType>
+        <EntityType Name="Klinika">
+          <Key>
+            <PropertyRef Name="Kod_plot" />
+          </Key>
+          <Property Name="Kod_plot" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod_strana" Type="Int32" />
+          <Property Name="Kod_city" Type="Int32" />
+          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Klinika__Kod_cit__06ED0088" FromRole="Klinika" ToRole="City" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Doctor__Kod_plot__09C96D33" FromRole="Klinika" ToRole="Doctor" />
+          <NavigationProperty Name="Strana" Relationship="Self.FK__Klinika__Kod_str__05F8DC4F" FromRole="Klinika" ToRole="Strana" />
+        </EntityType>
+        <EntityType Name="Lecheniye">
+          <Key>
+            <PropertyRef Name="Kod_lecheniye" />
+          </Key>
+          <Property Name="Kod_lecheniye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vid_lecheniye" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Duration_lecheniye" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name_lecheniye" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Opisaniye" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Diagnoz" Relationship="Self.FK__Diagnoz__Kod_lec__7E57BA87" FromRole="Lecheniye" ToRole="Diagnoz" />
+        </EntityType>
+        <EntityType Name="Obsledovaniye">
+          <Key>
+            <PropertyRef Name="Kod_obsledovaniye" />
+          </Key>
+          <Property Name="Kod_obsledovaniye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Opisaniye" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Kod_oplata" Type="Int32" />
+          <NavigationProperty Name="Oplata" Relationship="Self.FK__Obsledova__Kod_o__75C27486" FromRole="Obsledovaniye" ToRole="Oplata" />
+          <NavigationProperty Name="Visits" Relationship="Self.FK__Visits__Kod_obsl__153B1FDF" FromRole="Obsledovaniye" ToRole="Visits" />
+        </EntityType>
+        <EntityType Name="Oplata">
+          <Key>
+            <PropertyRef Name="Kod_oplata" />
+          </Key>
+          <Property Name="Kod_oplata" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vid_oplata" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Summa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Obsledovaniye" Relationship="Self.FK__Obsledova__Kod_o__75C27486" FromRole="Oplata" ToRole="Obsledovaniye" />
+          <NavigationProperty Name="Summa1" Relationship="Self.FK__Oplata__Summa__72E607DB" FromRole="Oplata" ToRole="Summa" />
+        </EntityType>
+        <EntityType Name="Pasport">
+          <Key>
+            <PropertyRef Name="Kod_pasporta" />
+          </Key>
+          <Property Name="Kod_pasporta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="N_pasporta" Type="Int32" />
+          <Property Name="S_pasporta" Type="Int32" />
+          <Property Name="V_pasport" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Data_v" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Doctor__Kod_pasp__0BB1B5A5" FromRole="Pasport" ToRole="Doctor" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Kod_pas__6C390A4C" FromRole="Pasport" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Kod_patient" />
+          </Key>
+          <Property Name="Kod_patient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="N_karta" Type="Int32" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name_" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Middle_name" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Tel_" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Kod_rayon" Type="Int32" />
+          <Property Name="Date_of_birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="N_plot" Type="Int32" />
+          <Property Name="Kod_pol" Type="Int32" />
+          <Property Name="Mail" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Sostoyaniye" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Kod_pasporta" Type="Int32" />
+          <Property Name="Kod_SNILSA" Type="Int32" />
+          <Property Name="Kod_POLISA" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pasport" Relationship="Self.FK__Patient__Kod_pas__6C390A4C" FromRole="Patient" ToRole="Pasport" />
+          <NavigationProperty Name="Pol" Relationship="Self.FK__Patient__Kod_pol__6B44E613" FromRole="Patient" ToRole="Pol" />
+          <NavigationProperty Name="POLIS" Relationship="Self.FK__Patient__Kod_POL__6E2152BE" FromRole="Patient" ToRole="POLIS" />
+          <NavigationProperty Name="Rayon" Relationship="Self.FK__Patient__Kod_ray__6A50C1DA" FromRole="Patient" ToRole="Rayon" />
+          <NavigationProperty Name="SNILS" Relationship="Self.FK__Patient__Kod_SNI__6D2D2E85" FromRole="Patient" ToRole="SNILS" />
+          <NavigationProperty Name="Priem" Relationship="Self.FK__Priem__Kod_patie__125EB334" FromRole="Patient" ToRole="Priem" />
+        </EntityType>
+        <EntityType Name="Pol">
+          <Key>
+            <PropertyRef Name="Kod_pol" />
+          </Key>
+          <Property Name="Kod_pol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pol1" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Kod_pol__6B44E613" FromRole="Pol" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="POLIS">
+          <Key>
+            <PropertyRef Name="Kod_POLISa" />
+          </Key>
+          <Property Name="Kod_POLISa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POLIS1" Type="String" MaxLength="150" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="N_POLISa" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="S_POLISa" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Kod_POL__6E2152BE" FromRole="POLIS" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Priem">
+          <Key>
+            <PropertyRef Name="Kod_zapisi" />
+          </Key>
+          <Property Name="Kod_zapisi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod_doctor" Type="Int32" />
+          <Property Name="Data_priema" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Kod_patient" Type="Int32" />
+          <Property Name="Surname_patient" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name_patient" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Middle_name_patient" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Priem__Kod_docto__116A8EFB" FromRole="Priem" ToRole="Doctor" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Priem__Kod_patie__125EB334" FromRole="Priem" ToRole="Patient" />
+          <NavigationProperty Name="Visits" Relationship="Self.FK__Visits__Kod_zapi__162F4418" FromRole="Priem" ToRole="Visits" />
+        </EntityType>
+        <EntityType Name="Raspisanie">
+          <Key>
+            <PropertyRef Name="Kod_raspisanie" />
+          </Key>
+          <Property Name="Kod_raspisanie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="N_raspisanie" Type="Int32" />
+          <Property Name="Data_priema" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="N_kabineta" Type="Int32" />
+          <Property Name="Kod_smena" Type="Int32" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Doctor_Raspisanie" FromRole="Raspisanie" ToRole="Doctor" />
+          <NavigationProperty Name="Smena" Relationship="Self.FK__Raspisani__Kod_s__5832119F" FromRole="Raspisanie" ToRole="Smena" />
+        </EntityType>
+        <EntityType Name="Rayon">
+          <Key>
+            <PropertyRef Name="Kod_rayon" />
+          </Key>
+          <Property Name="Kod_rayon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rayon1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Kod_ray__6A50C1DA" FromRole="Rayon" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Slozhnost">
+          <Key>
+            <PropertyRef Name="Kod_slozhnost" />
+          </Key>
+          <Property Name="Kod_slozhnost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Slozhnost1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Opisaniye" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Diagnoz" Relationship="Self.FK__Diagnoz__Kod_slo__7F4BDEC0" FromRole="Slozhnost" ToRole="Diagnoz" />
+        </EntityType>
+        <EntityType Name="Smena">
+          <Key>
+            <PropertyRef Name="Kod_smena" />
+          </Key>
+          <Property Name="Kod_smena" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_smena" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="N_smena" Type="Int32" />
+          <NavigationProperty Name="Raspisanie" Relationship="Self.FK__Raspisani__Kod_s__5832119F" FromRole="Smena" ToRole="Raspisanie" />
+        </EntityType>
+        <EntityType Name="SNILS">
+          <Key>
+            <PropertyRef Name="Kod_SNILSa" />
+          </Key>
+          <Property Name="Kod_SNILSa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SNILS1" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="N_SNILSa" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="Data_registr" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Patient__Kod_SNI__6D2D2E85" FromRole="SNILS" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Specialnost">
+          <Key>
+            <PropertyRef Name="Kod_specialnost" />
+          </Key>
+          <Property Name="Kod_specialnost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Specialnost1" Type="String" MaxLength="150" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Doctor__Kod_spec__0CA5D9DE" FromRole="Specialnost" ToRole="Doctor" />
+        </EntityType>
+        <EntityType Name="Strana">
+          <Key>
+            <PropertyRef Name="Kod_strana" />
+          </Key>
+          <Property Name="Kod_strana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Strana1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Klinika" Relationship="Self.FK__Klinika__Kod_str__05F8DC4F" FromRole="Strana" ToRole="Klinika" />
+        </EntityType>
+        <EntityType Name="Summa">
+          <Key>
+            <PropertyRef Name="Kod_summa" />
+          </Key>
+          <Property Name="Kod_summa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Summa1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Oplata" Relationship="Self.FK__Oplata__Summa__72E607DB" FromRole="Summa" ToRole="Oplata" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="Kod_uslugi" />
+          </Key>
+          <Property Name="Kod_uslugi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uslugi1" Type="String" MaxLength="150" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK__Doctor__Kod_uslu__0E8E2250" FromRole="Uslugi" ToRole="Doctor" />
+        </EntityType>
+        <EntityType Name="Visits">
+          <Key>
+            <PropertyRef Name="Kod_visits" />
+          </Key>
+          <Property Name="Kod_visits" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod_obsledovaniye" Type="Int32" />
+          <Property Name="Zapis_visits" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_priema" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="N_karta" Type="Int32" />
+          <Property Name="Kod_zapisi" Type="Int32" Nullable="false" />
+          <Property Name="Kod_zhaloba" Type="Int32" />
+          <NavigationProperty Name="Karta" Relationship="Self.FK__Karta__Kod_visit__19FFD4FC" FromRole="Visits" ToRole="Karta" />
+          <NavigationProperty Name="Obsledovaniye" Relationship="Self.FK__Visits__Kod_obsl__153B1FDF" FromRole="Visits" ToRole="Obsledovaniye" />
+          <NavigationProperty Name="Priem" Relationship="Self.FK__Visits__Kod_zapi__162F4418" FromRole="Visits" ToRole="Priem" />
+          <NavigationProperty Name="Zhaloba" Relationship="Self.FK__Visits__Kod_zhal__17236851" FromRole="Visits" ToRole="Zhaloba" />
+        </EntityType>
+        <EntityType Name="Zhaloba">
+          <Key>
+            <PropertyRef Name="Kod_zhaloba" />
+          </Key>
+          <Property Name="Kod_zhaloba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Zhaloba1" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Kod_doctor" Type="Int32" />
+          <NavigationProperty Name="Visits" Relationship="Self.FK__Visits__Kod_zhal__17236851" FromRole="Zhaloba" ToRole="Visits" />
+        </EntityType>
+        <Association Name="FK__Klinika__Kod_cit__06ED0088">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Klinika" Type="Self.Klinika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Kod_city" />
+            </Principal>
+            <Dependent Role="Klinika">
+              <PropertyRef Name="Kod_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnoz__Kod_lec__7E57BA87">
+          <End Role="Lecheniye" Type="Self.Lecheniye" Multiplicity="0..1" />
+          <End Role="Diagnoz" Type="Self.Diagnoz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lecheniye">
+              <PropertyRef Name="Kod_lecheniye" />
+            </Principal>
+            <Dependent Role="Diagnoz">
+              <PropertyRef Name="Kod_lecheniye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnoz__Kod_slo__7F4BDEC0">
+          <End Role="Slozhnost" Type="Self.Slozhnost" Multiplicity="0..1" />
+          <End Role="Diagnoz" Type="Self.Diagnoz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Slozhnost">
+              <PropertyRef Name="Kod_slozhnost" />
+            </Principal>
+            <Dependent Role="Diagnoz">
+              <PropertyRef Name="Kod_slozhnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Karta__Kod_diagn__1AF3F935">
+          <End Role="Diagnoz" Type="Self.Diagnoz" Multiplicity="0..1" />
+          <End Role="Karta" Type="Self.Karta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnoz">
+              <PropertyRef Name="Kod_diagnoz" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="Kod_diagnoz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Kod_pasp__0BB1B5A5">
+          <End Role="Pasport" Type="Self.Pasport" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasport">
+              <PropertyRef Name="Kod_pasporta" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_pasport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Kod_plot__09C96D33">
+          <End Role="Klinika" Type="Self.Klinika" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klinika">
+              <PropertyRef Name="Kod_plot" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_plot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Kod_spec__0CA5D9DE">
+          <End Role="Specialnost" Type="Self.Specialnost" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialnost">
+              <PropertyRef Name="Kod_specialnost" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_specialnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doctor__Kod_uslu__0E8E2250">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="Kod_uslugi" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_uslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Priem__Kod_docto__116A8EFB">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Kod_doctor" />
+            </Principal>
+            <Dependent Role="Priem">
+              <PropertyRef Name="Kod_doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Doctor_Raspisanie">
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raspisanie">
+              <PropertyRef Name="Kod_raspisanie" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="Kod_raspisanie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Karta__Kod_visit__19FFD4FC">
+          <End Role="Visits" Type="Self.Visits" Multiplicity="0..1" />
+          <End Role="Karta" Type="Self.Karta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visits">
+              <PropertyRef Name="Kod_visits" />
+            </Principal>
+            <Dependent Role="Karta">
+              <PropertyRef Name="Kod_visits" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Klinika__Kod_str__05F8DC4F">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="0..1" />
+          <End Role="Klinika" Type="Self.Klinika" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="Kod_strana" />
+            </Principal>
+            <Dependent Role="Klinika">
+              <PropertyRef Name="Kod_strana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Obsledova__Kod_o__75C27486">
+          <End Role="Oplata" Type="Self.Oplata" Multiplicity="0..1" />
+          <End Role="Obsledovaniye" Type="Self.Obsledovaniye" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oplata">
+              <PropertyRef Name="Kod_oplata" />
+            </Principal>
+            <Dependent Role="Obsledovaniye">
+              <PropertyRef Name="Kod_oplata" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visits__Kod_obsl__153B1FDF">
+          <End Role="Obsledovaniye" Type="Self.Obsledovaniye" Multiplicity="0..1" />
+          <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obsledovaniye">
+              <PropertyRef Name="Kod_obsledovaniye" />
+            </Principal>
+            <Dependent Role="Visits">
+              <PropertyRef Name="Kod_obsledovaniye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Oplata__Summa__72E607DB">
+          <End Role="Summa" Type="Self.Summa" Multiplicity="1" />
+          <End Role="Oplata" Type="Self.Oplata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Summa">
+              <PropertyRef Name="Kod_summa" />
+            </Principal>
+            <Dependent Role="Oplata">
+              <PropertyRef Name="Summa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_pas__6C390A4C">
+          <End Role="Pasport" Type="Self.Pasport" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pasport">
+              <PropertyRef Name="Kod_pasporta" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_pasporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_pol__6B44E613">
+          <End Role="Pol" Type="Self.Pol" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pol">
+              <PropertyRef Name="Kod_pol" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_pol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_POL__6E2152BE">
+          <End Role="POLIS" Type="Self.POLIS" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POLIS">
+              <PropertyRef Name="Kod_POLISa" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_POLISA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_ray__6A50C1DA">
+          <End Role="Rayon" Type="Self.Rayon" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rayon">
+              <PropertyRef Name="Kod_rayon" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_rayon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patient__Kod_SNI__6D2D2E85">
+          <End Role="SNILS" Type="Self.SNILS" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SNILS">
+              <PropertyRef Name="Kod_SNILSa" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Kod_SNILSA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Priem__Kod_patie__125EB334">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Kod_patient" />
+            </Principal>
+            <Dependent Role="Priem">
+              <PropertyRef Name="Kod_patient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visits__Kod_zapi__162F4418">
+          <End Role="Priem" Type="Self.Priem" Multiplicity="1" />
+          <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priem">
+              <PropertyRef Name="Kod_zapisi" />
+            </Principal>
+            <Dependent Role="Visits">
+              <PropertyRef Name="Kod_zapisi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Raspisani__Kod_s__5832119F">
+          <End Role="Smena" Type="Self.Smena" Multiplicity="0..1" />
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smena">
+              <PropertyRef Name="Kod_smena" />
+            </Principal>
+            <Dependent Role="Raspisanie">
+              <PropertyRef Name="Kod_smena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Visits__Kod_zhal__17236851">
+          <End Role="Zhaloba" Type="Self.Zhaloba" Multiplicity="0..1" />
+          <End Role="Visits" Type="Self.Visits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zhaloba">
+              <PropertyRef Name="Kod_zhaloba" />
+            </Principal>
+            <Dependent Role="Visits">
+              <PropertyRef Name="Kod_zhaloba" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Diagnoz" EntityType="Self.Diagnoz" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" />
+          <EntitySet Name="history_store" EntityType="Self.history_store" />
+          <EntitySet Name="Karta" EntityType="Self.Karta" />
+          <EntitySet Name="Klinika" EntityType="Self.Klinika" />
+          <EntitySet Name="Lecheniye" EntityType="Self.Lecheniye" />
+          <EntitySet Name="Obsledovaniye" EntityType="Self.Obsledovaniye" />
+          <EntitySet Name="Oplata" EntityType="Self.Oplata" />
+          <EntitySet Name="Pasport" EntityType="Self.Pasport" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" />
+          <EntitySet Name="Pol" EntityType="Self.Pol" />
+          <EntitySet Name="POLIS" EntityType="Self.POLIS" />
+          <EntitySet Name="Priem" EntityType="Self.Priem" />
+          <EntitySet Name="Raspisanie" EntityType="Self.Raspisanie" />
+          <EntitySet Name="Rayon" EntityType="Self.Rayon" />
+          <EntitySet Name="Slozhnost" EntityType="Self.Slozhnost" />
+          <EntitySet Name="Smena" EntityType="Self.Smena" />
+          <EntitySet Name="SNILS" EntityType="Self.SNILS" />
+          <EntitySet Name="Specialnost" EntityType="Self.Specialnost" />
+          <EntitySet Name="Strana" EntityType="Self.Strana" />
+          <EntitySet Name="Summa" EntityType="Self.Summa" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" />
+          <EntitySet Name="Visits" EntityType="Self.Visits" />
+          <EntitySet Name="Zhaloba" EntityType="Self.Zhaloba" />
+          <AssociationSet Name="FK__Klinika__Kod_cit__06ED0088" Association="Self.FK__Klinika__Kod_cit__06ED0088">
+            <End Role="City" EntitySet="City" />
+            <End Role="Klinika" EntitySet="Klinika" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnoz__Kod_lec__7E57BA87" Association="Self.FK__Diagnoz__Kod_lec__7E57BA87">
+            <End Role="Lecheniye" EntitySet="Lecheniye" />
+            <End Role="Diagnoz" EntitySet="Diagnoz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnoz__Kod_slo__7F4BDEC0" Association="Self.FK__Diagnoz__Kod_slo__7F4BDEC0">
+            <End Role="Slozhnost" EntitySet="Slozhnost" />
+            <End Role="Diagnoz" EntitySet="Diagnoz" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Karta__Kod_diagn__1AF3F935" Association="Self.FK__Karta__Kod_diagn__1AF3F935">
+            <End Role="Diagnoz" EntitySet="Diagnoz" />
+            <End Role="Karta" EntitySet="Karta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Kod_pasp__0BB1B5A5" Association="Self.FK__Doctor__Kod_pasp__0BB1B5A5">
+            <End Role="Pasport" EntitySet="Pasport" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Kod_plot__09C96D33" Association="Self.FK__Doctor__Kod_plot__09C96D33">
+            <End Role="Klinika" EntitySet="Klinika" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Kod_spec__0CA5D9DE" Association="Self.FK__Doctor__Kod_spec__0CA5D9DE">
+            <End Role="Specialnost" EntitySet="Specialnost" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doctor__Kod_uslu__0E8E2250" Association="Self.FK__Doctor__Kod_uslu__0E8E2250">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Priem__Kod_docto__116A8EFB" Association="Self.FK__Priem__Kod_docto__116A8EFB">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Priem" EntitySet="Priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Doctor_Raspisanie" Association="Self.FK_Doctor_Raspisanie">
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Karta__Kod_visit__19FFD4FC" Association="Self.FK__Karta__Kod_visit__19FFD4FC">
+            <End Role="Visits" EntitySet="Visits" />
+            <End Role="Karta" EntitySet="Karta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Klinika__Kod_str__05F8DC4F" Association="Self.FK__Klinika__Kod_str__05F8DC4F">
+            <End Role="Strana" EntitySet="Strana" />
+            <End Role="Klinika" EntitySet="Klinika" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Obsledova__Kod_o__75C27486" Association="Self.FK__Obsledova__Kod_o__75C27486">
+            <End Role="Oplata" EntitySet="Oplata" />
+            <End Role="Obsledovaniye" EntitySet="Obsledovaniye" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visits__Kod_obsl__153B1FDF" Association="Self.FK__Visits__Kod_obsl__153B1FDF">
+            <End Role="Obsledovaniye" EntitySet="Obsledovaniye" />
+            <End Role="Visits" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Oplata__Summa__72E607DB" Association="Self.FK__Oplata__Summa__72E607DB">
+            <End Role="Summa" EntitySet="Summa" />
+            <End Role="Oplata" EntitySet="Oplata" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_pas__6C390A4C" Association="Self.FK__Patient__Kod_pas__6C390A4C">
+            <End Role="Pasport" EntitySet="Pasport" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_pol__6B44E613" Association="Self.FK__Patient__Kod_pol__6B44E613">
+            <End Role="Pol" EntitySet="Pol" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_POL__6E2152BE" Association="Self.FK__Patient__Kod_POL__6E2152BE">
+            <End Role="POLIS" EntitySet="POLIS" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_ray__6A50C1DA" Association="Self.FK__Patient__Kod_ray__6A50C1DA">
+            <End Role="Rayon" EntitySet="Rayon" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patient__Kod_SNI__6D2D2E85" Association="Self.FK__Patient__Kod_SNI__6D2D2E85">
+            <End Role="SNILS" EntitySet="SNILS" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Priem__Kod_patie__125EB334" Association="Self.FK__Priem__Kod_patie__125EB334">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Priem" EntitySet="Priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visits__Kod_zapi__162F4418" Association="Self.FK__Visits__Kod_zapi__162F4418">
+            <End Role="Priem" EntitySet="Priem" />
+            <End Role="Visits" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Raspisani__Kod_s__5832119F" Association="Self.FK__Raspisani__Kod_s__5832119F">
+            <End Role="Smena" EntitySet="Smena" />
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Visits__Kod_zhal__17236851" Association="Self.FK__Visits__Kod_zhal__17236851">
+            <End Role="Zhaloba" EntitySet="Zhaloba" />
+            <End Role="Visits" EntitySet="Visits" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Kod_city" ColumnName="Kod_city" />
+                <ScalarProperty Name="City1" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnoz">
+            <EntityTypeMapping TypeName="Model.Diagnoz">
+              <MappingFragment StoreEntitySet="Diagnoz">
+                <ScalarProperty Name="Kod_diagnoz" ColumnName="Kod_diagnoz" />
+                <ScalarProperty Name="Diagnoz1" ColumnName="Diagnoz" />
+                <ScalarProperty Name="Surname_doctor" ColumnName="Surname_doctor" />
+                <ScalarProperty Name="Name_doctor" ColumnName="Name_doctor" />
+                <ScalarProperty Name="Middle_name_doctor" ColumnName="Middle_name_doctor" />
+                <ScalarProperty Name="Data_obrashcheniye" ColumnName="Data_obrashcheniye" />
+                <ScalarProperty Name="Data_vyzdorovleniya" ColumnName="Data_vyzdorovleniya" />
+                <ScalarProperty Name="Kod_lecheniye" ColumnName="Kod_lecheniye" />
+                <ScalarProperty Name="Profilaktika" ColumnName="Profilaktika" />
+                <ScalarProperty Name="Kod_slozhnost" ColumnName="Kod_slozhnost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctor">
+            <EntityTypeMapping TypeName="Model.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="Kod_doctor" ColumnName="Kod_doctor" />
+                <ScalarProperty Name="Kod_plot" ColumnName="Kod_plot" />
+                <ScalarProperty Name="Kod_raspisanie" ColumnName="Kod_raspisanie" />
+                <ScalarProperty Name="N_raspisanie" ColumnName="N_raspisanie" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name_" ColumnName="Name_" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
+                <ScalarProperty Name="Kod_pasport" ColumnName="Kod_pasport" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Op_rabot" ColumnName="Op_rabot" />
+                <ScalarProperty Name="Kod_specialnost" ColumnName="Kod_specialnost" />
+                <ScalarProperty Name="Tel_" ColumnName="Tel_" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Zarplata" ColumnName="Zarplata" />
+                <ScalarProperty Name="Kod_uslugi" ColumnName="Kod_uslugi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="history_store">
+            <EntityTypeMapping TypeName="Model.history_store">
+              <MappingFragment StoreEntitySet="history_store">
+                <ScalarProperty Name="timemark" ColumnName="timemark" />
+                <ScalarProperty Name="table_name" ColumnName="table_name" />
+                <ScalarProperty Name="pk_date_src" ColumnName="pk_date_src" />
+                <ScalarProperty Name="pk_date_dest" ColumnName="pk_date_dest" />
+                <ScalarProperty Name="record_state" ColumnName="record_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Karta">
+            <EntityTypeMapping TypeName="Model.Karta">
+              <MappingFragment StoreEntitySet="Karta">
+                <ScalarProperty Name="Kod_karta" ColumnName="Kod_karta" />
+                <ScalarProperty Name="N_karta" ColumnName="N_karta" />
+                <ScalarProperty Name="Kod_visits" ColumnName="Kod_visits" />
+                <ScalarProperty Name="Zapis" ColumnName="Zapis" />
+                <ScalarProperty Name="Kod_diagnoz" ColumnName="Kod_diagnoz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klinika">
+            <EntityTypeMapping TypeName="Model.Klinika">
+              <MappingFragment StoreEntitySet="Klinika">
+                <ScalarProperty Name="Kod_plot" ColumnName="Kod_plot" />
+                <ScalarProperty Name="Kod_strana" ColumnName="Kod_strana" />
+                <ScalarProperty Name="Kod_city" ColumnName="Kod_city" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lecheniye">
+            <EntityTypeMapping TypeName="Model.Lecheniye">
+              <MappingFragment StoreEntitySet="Lecheniye">
+                <ScalarProperty Name="Kod_lecheniye" ColumnName="Kod_lecheniye" />
+                <ScalarProperty Name="Vid_lecheniye" ColumnName="Vid_lecheniye" />
+                <ScalarProperty Name="Duration_lecheniye" ColumnName="Duration_lecheniye" />
+                <ScalarProperty Name="Name_lecheniye" ColumnName="Name_lecheniye" />
+                <ScalarProperty Name="Opisaniye" ColumnName="Opisaniye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Obsledovaniye">
+            <EntityTypeMapping TypeName="Model.Obsledovaniye">
+              <MappingFragment StoreEntitySet="Obsledovaniye">
+                <ScalarProperty Name="Kod_obsledovaniye" ColumnName="Kod_obsledovaniye" />
+                <ScalarProperty Name="Opisaniye" ColumnName="Opisaniye" />
+                <ScalarProperty Name="Kod_oplata" ColumnName="Kod_oplata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oplata">
+            <EntityTypeMapping TypeName="Model.Oplata">
+              <MappingFragment StoreEntitySet="Oplata">
+                <ScalarProperty Name="Kod_oplata" ColumnName="Kod_oplata" />
+                <ScalarProperty Name="Vid_oplata" ColumnName="Vid_oplata" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pasport">
+            <EntityTypeMapping TypeName="Model.Pasport">
+              <MappingFragment StoreEntitySet="Pasport">
+                <ScalarProperty Name="Kod_pasporta" ColumnName="Kod_pasporta" />
+                <ScalarProperty Name="N_pasporta" ColumnName="N_pasporta" />
+                <ScalarProperty Name="S_pasporta" ColumnName="S_pasporta" />
+                <ScalarProperty Name="V_pasport" ColumnName="V_pasport" />
+                <ScalarProperty Name="Data_v" ColumnName="Data_v" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient">
+            <EntityTypeMapping TypeName="Model.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Kod_patient" ColumnName="Kod_patient" />
+                <ScalarProperty Name="N_karta" ColumnName="N_karta" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name_" ColumnName="Name_" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Tel_" ColumnName="Tel_" />
+                <ScalarProperty Name="Kod_rayon" ColumnName="Kod_rayon" />
+                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
+                <ScalarProperty Name="N_plot" ColumnName="N_plot" />
+                <ScalarProperty Name="Kod_pol" ColumnName="Kod_pol" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sostoyaniye" ColumnName="Sostoyaniye" />
+                <ScalarProperty Name="Kod_pasporta" ColumnName="Kod_pasporta" />
+                <ScalarProperty Name="Kod_SNILSA" ColumnName="Kod_SNILSA" />
+                <ScalarProperty Name="Kod_POLISA" ColumnName="Kod_POLISA" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pol">
+            <EntityTypeMapping TypeName="Model.Pol">
+              <MappingFragment StoreEntitySet="Pol">
+                <ScalarProperty Name="Kod_pol" ColumnName="Kod_pol" />
+                <ScalarProperty Name="Pol1" ColumnName="Pol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POLIS">
+            <EntityTypeMapping TypeName="Model.POLIS">
+              <MappingFragment StoreEntitySet="POLIS">
+                <ScalarProperty Name="Kod_POLISa" ColumnName="Kod_POLISa" />
+                <ScalarProperty Name="POLIS1" ColumnName="POLIS" />
+                <ScalarProperty Name="N_POLISa" ColumnName="N_POLISa" />
+                <ScalarProperty Name="S_POLISa" ColumnName="S_POLISa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Priem">
+            <EntityTypeMapping TypeName="Model.Priem">
+              <MappingFragment StoreEntitySet="Priem">
+                <ScalarProperty Name="Kod_zapisi" ColumnName="Kod_zapisi" />
+                <ScalarProperty Name="Kod_doctor" ColumnName="Kod_doctor" />
+                <ScalarProperty Name="Data_priema" ColumnName="Data_priema" />
+                <ScalarProperty Name="Kod_patient" ColumnName="Kod_patient" />
+                <ScalarProperty Name="Surname_patient" ColumnName="Surname_patient" />
+                <ScalarProperty Name="Name_patient" ColumnName="Name_patient" />
+                <ScalarProperty Name="Middle_name_patient" ColumnName="Middle_name_patient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Raspisanie">
+            <EntityTypeMapping TypeName="Model.Raspisanie">
+              <MappingFragment StoreEntitySet="Raspisanie">
+                <ScalarProperty Name="Kod_raspisanie" ColumnName="Kod_raspisanie" />
+                <ScalarProperty Name="N_raspisanie" ColumnName="N_raspisanie" />
+                <ScalarProperty Name="Data_priema" ColumnName="Data_priema" />
+                <ScalarProperty Name="N_kabineta" ColumnName="N_kabineta" />
+                <ScalarProperty Name="Kod_smena" ColumnName="Kod_smena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rayon">
+            <EntityTypeMapping TypeName="Model.Rayon">
+              <MappingFragment StoreEntitySet="Rayon">
+                <ScalarProperty Name="Kod_rayon" ColumnName="Kod_rayon" />
+                <ScalarProperty Name="Rayon1" ColumnName="Rayon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slozhnost">
+            <EntityTypeMapping TypeName="Model.Slozhnost">
+              <MappingFragment StoreEntitySet="Slozhnost">
+                <ScalarProperty Name="Kod_slozhnost" ColumnName="Kod_slozhnost" />
+                <ScalarProperty Name="Slozhnost1" ColumnName="Slozhnost" />
+                <ScalarProperty Name="Opisaniye" ColumnName="Opisaniye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Smena">
+            <EntityTypeMapping TypeName="Model.Smena">
+              <MappingFragment StoreEntitySet="Smena">
+                <ScalarProperty Name="Kod_smena" ColumnName="Kod_smena" />
+                <ScalarProperty Name="Data_smena" ColumnName="Data_smena" />
+                <ScalarProperty Name="N_smena" ColumnName="N_smena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SNILS">
+            <EntityTypeMapping TypeName="Model.SNILS">
+              <MappingFragment StoreEntitySet="SNILS">
+                <ScalarProperty Name="Kod_SNILSa" ColumnName="Kod_SNILSa" />
+                <ScalarProperty Name="SNILS1" ColumnName="SNILS" />
+                <ScalarProperty Name="N_SNILSa" ColumnName="N_SNILSa" />
+                <ScalarProperty Name="Data_registr" ColumnName="Data_registr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialnost">
+            <EntityTypeMapping TypeName="Model.Specialnost">
+              <MappingFragment StoreEntitySet="Specialnost">
+                <ScalarProperty Name="Kod_specialnost" ColumnName="Kod_specialnost" />
+                <ScalarProperty Name="Specialnost1" ColumnName="Specialnost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Strana">
+            <EntityTypeMapping TypeName="Model.Strana">
+              <MappingFragment StoreEntitySet="Strana">
+                <ScalarProperty Name="Kod_strana" ColumnName="Kod_strana" />
+                <ScalarProperty Name="Strana1" ColumnName="Strana" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Summa">
+            <EntityTypeMapping TypeName="Model.Summa">
+              <MappingFragment StoreEntitySet="Summa">
+                <ScalarProperty Name="Kod_summa" ColumnName="Kod_summa" />
+                <ScalarProperty Name="Summa1" ColumnName="Summa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uslugi">
+            <EntityTypeMapping TypeName="Model.Uslugi">
+              <MappingFragment StoreEntitySet="Uslugi">
+                <ScalarProperty Name="Kod_uslugi" ColumnName="Kod_uslugi" />
+                <ScalarProperty Name="Uslugi1" ColumnName="Uslugi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visits">
+            <EntityTypeMapping TypeName="Model.Visits">
+              <MappingFragment StoreEntitySet="Visits">
+                <ScalarProperty Name="Kod_visits" ColumnName="Kod_visits" />
+                <ScalarProperty Name="Kod_obsledovaniye" ColumnName="Kod_obsledovaniye" />
+                <ScalarProperty Name="Zapis_visits" ColumnName="Zapis_visits" />
+                <ScalarProperty Name="Data_priema" ColumnName="Data_priema" />
+                <ScalarProperty Name="N_karta" ColumnName="N_karta" />
+                <ScalarProperty Name="Kod_zapisi" ColumnName="Kod_zapisi" />
+                <ScalarProperty Name="Kod_zhaloba" ColumnName="Kod_zhaloba" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zhaloba">
+            <EntityTypeMapping TypeName="Model.Zhaloba">
+              <MappingFragment StoreEntitySet="Zhaloba">
+                <ScalarProperty Name="Kod_zhaloba" ColumnName="Kod_zhaloba" />
+                <ScalarProperty Name="Zhaloba1" ColumnName="Zhaloba" />
+                <ScalarProperty Name="Kod_doctor" ColumnName="Kod_doctor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
