@@ -167,101 +167,102 @@
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entities\City.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Diagnoz.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Doctor.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\history_store.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Karta.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Klinika.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Lecheniye.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Obsledovaniye.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Oplata.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Pasport.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Patient.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PatientModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PatientModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PatientModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Pol.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\POLIS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Priem.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Raspisanie.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Rayon.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Slozhnost.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Smena.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\SNILS.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Specialnost.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Strana.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Summa.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sysdiagrams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Uslugi.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Visits.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Zhaloba.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>PatientModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PatientModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,15 +271,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Entities\Model.Context.tt">
+    <Content Include="Entities\PatientModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-      <DependentUpon>Model.edmx</DependentUpon>
+      <DependentUpon>PatientModel.edmx</DependentUpon>
+      <LastGenOutput>PatientModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Entities\Model.tt">
+    <Content Include="Entities\PatientModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
+      <DependentUpon>PatientModel.edmx</DependentUpon>
+      <LastGenOutput>PatientModel.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -304,12 +305,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Entities\Model.edmx">
+    <EntityDeploy Include="Entities\PatientModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>PatientModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Entities\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
+    <Content Include="Entities\PatientModel.edmx.diagram">
+      <DependentUpon>PatientModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -334,7 +335,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

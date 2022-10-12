@@ -9,17 +9,19 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API2.Entities;
+using API2.Models;
 
 namespace API2.Controllers
 {
     public class PatientsController : ApiController
     {
-        private Entities1 db = new Entities1();
+        private Entities2 db = new Entities2();
 
         // GET: api/Patients
-        public IQueryable<Patient> GetPatient()
+        [ResponseType(typeof(List<PatientModel>))]
+        public IHttpActionResult GetPatient()
         {
-            return db.Patient;
+            return Ok(db.Patient.ToList().ConvertAll(x=> new PatientModel(x)));
         }
 
         // GET: api/Patients/5

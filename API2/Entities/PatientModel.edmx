@@ -1299,7 +1299,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Diagnoz" EntityType="Self.Diagnoz" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" />
@@ -1428,7 +1428,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities2">
           <EntitySetMapping Name="City">
             <EntityTypeMapping TypeName="Model.City">
               <MappingFragment StoreEntitySet="City">
